@@ -1,0 +1,9 @@
+services:
+  gui_app:
+    build: .
+    container_name: gui_app
+    environment:
+      - DISPLAY=${DISPLAY}         # используем X-сервер хоста
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix  # проброс сокета X
+    network_mode: "host"          # для корректной работы Qt с X11
